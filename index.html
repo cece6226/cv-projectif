@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Célian Duval — Développeur Full-Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{--ink:#0e1b33;--paper:#f4f6fa;--blue:#2447d6;--sky:#dbe5ff;--sun:#ffc94a;--mute:#556078;--line:#d8dfeb;--teal:#0f8b72}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{font:16px/1.65 'Instrument Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+h1,h2,h3,.logo,time{font-family:'Bricolage Grotesque','Instrument Sans',sans-serif;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.dk :focus-visible{outline-color:var(--sun)}
+.w{max-width:1120px;margin:auto;padding:0 1.25rem}
+::selection{background:var(--sun);color:var(--ink)}
+
+/* Navigation */
+nav{position:fixed;inset:0 0 auto;z-index:20;background:#f4f6facc;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:4rem}
+.logo{display:flex;align-items:center;gap:.75rem;font-weight:800;font-size:1.05rem;text-decoration:none}
+.logo b{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:10px;background:var(--ink);color:var(--sun);font-size:1rem}
+.menu a{margin-left:1.9rem;font-size:.92rem;font-weight:600;color:var(--mute);text-decoration:none;padding:.3rem 0;border-bottom:2px solid transparent}
+.menu a:hover{color:var(--ink);border-color:var(--blue)}
+#menu-btn{display:none;background:none;border:0;font-size:1.3rem;padding:.5rem;cursor:pointer;color:var(--ink)}
+#mm{padding:.5rem 1.25rem 1rem;border-top:1px solid var(--line)}
+#mm a{display:block;padding:.6rem 0;font-weight:600;text-decoration:none}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font:700 .92rem 'Instrument Sans',sans-serif;padding:.85rem 1.4rem;border-radius:10px;border:2px solid transparent;cursor:pointer;text-decoration:none;background:var(--blue);color:#fff;transition:transform .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn.sun{background:var(--sun);color:var(--ink)}
+.btn.line{background:none;border-color:#ffffff80;color:#fff}
+
+/* Héros */
+.dk{background-color:var(--ink);color:#fff;background-image:linear-gradient(#ffffff0c 1px,transparent 1px),linear-gradient(90deg,#ffffff0c 1px,transparent 1px);background-size:48px 48px}
+.hero{padding:8.5rem 0 5.5rem;overflow:hidden}
+.hero .w{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:center}
+.pill{display:inline-block;border:1px solid #ffffff40;border-radius:99px;padding:.3rem 1rem;font-size:.88rem;font-weight:500;color:var(--sky);margin-bottom:1.6rem}
+.hero h1{font-size:clamp(3.8rem,10vw,7.6rem);font-weight:800;line-height:.88;margin-bottom:1.6rem}
+.hero h1 span{display:block}
+.hero h1 span+span{margin-left:clamp(0rem,6vw,4.5rem)}
+.sub{font:700 clamp(1.25rem,2.4vw,1.7rem)/1.25 'Bricolage Grotesque',sans-serif;color:var(--sky);margin-bottom:1.1rem}
+.lead{max-width:34rem;color:#c3cde0;margin-bottom:2rem}
+.cta{display:flex;flex-wrap:wrap;gap:.9rem}
+.tx>*{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
+.tx>:nth-child(2){animation-delay:.08s}.tx>:nth-child(3){animation-delay:.18s}.tx>:nth-child(4){animation-delay:.28s}.tx>:nth-child(5){animation-delay:.38s}
+@keyframes up{from{opacity:0;transform:translateY(36px)}}
+.ph{position:relative;width:min(100%,330px);aspect-ratio:4/5;justify-self:center;animation:up .9s .3s cubic-bezier(.2,.7,.2,1) both}
+.ph::before{content:"";position:absolute;inset:1.2rem -1.2rem -1.2rem 1.2rem;background:var(--sun);border-radius:999px 999px 24px 24px}
+.ph img{position:relative;width:100%;height:100%;object-fit:cover;border-radius:999px 999px 24px 24px;background:#1b2c4d}
+
+/* Sections */
+section{padding:5.5rem 0}
+.sec{display:grid;grid-template-columns:250px 1fr;gap:3rem}
+.hd{position:sticky;top:6rem;align-self:start}
+.hd h2{font-size:clamp(1.9rem,3.2vw,2.5rem);font-weight:800}
+.hd p{margin-top:.9rem;color:var(--mute);font-size:.95rem;padding-top:.9rem;border-top:3px solid var(--blue);width:3.5rem;white-space:nowrap}
+.dk .hd p{color:var(--sky);border-color:var(--sun)}
+.white{background:#fff}
+
+/* À propos */
+.abt{display:grid;grid-template-columns:repeat(3,1fr)}
+.abt article{padding:0 1.5rem;border-left:1px solid var(--line)}
+.abt article:first-child{padding-left:0;border:0}
+.ic{display:grid;place-items:center;width:3rem;height:3rem;border-radius:50%;background:var(--sky);color:var(--blue);font-size:1.1rem;margin-bottom:1.1rem}
+.abt h3,.sk h3{font-size:1.2rem;font-weight:700;margin-bottom:.6rem}
+.abt p{color:var(--mute);font-size:.93rem}
+
+/* Compétences */
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.5rem 2rem}
+.sk h3{padding-bottom:.7rem;margin-bottom:1.3rem;border-bottom:2px solid var(--ink)}
+.sk h3 i{color:var(--blue);margin-right:.5rem}
+.sk ul{list-style:none;padding:0}
+.sk li{display:grid;grid-template-columns:1fr auto;gap:.3rem .5rem;margin-bottom:1.15rem;font-size:.9rem;font-weight:600}
+.sk li b{color:var(--blue)}
+.sk li::after{content:"";grid-column:1/-1;height:6px;border-radius:9px;background-image:linear-gradient(var(--blue),var(--blue)),linear-gradient(var(--line),var(--line));background-size:var(--v) 100%,100% 100%;background-repeat:no-repeat;transition:background-size 1.1s cubic-bezier(.2,.7,.2,1)}
+.js #skills:not(.in) li::after{background-size:0 100%,100% 100%}
+
+/* Parcours */
+.tl{border-left:2px solid var(--line);margin-left:.5rem}
+.tl article{position:relative;display:grid;grid-template-columns:8.5rem 1fr;gap:1.5rem;padding:0 0 3rem 2rem}
+.tl article:last-child{padding-bottom:0}
+.tl article::before{content:"";position:absolute;left:-.58rem;top:.3rem;width:1rem;height:1rem;border-radius:50%;background:var(--c);box-shadow:0 0 0 4px #fff}
+.tl time{font-size:1.1rem;font-weight:700}
+.k1{--c:#e8ae00;--t:#fff0bf}.k2{--c:var(--blue);--t:var(--sky)}.k3{--c:var(--teal);--t:#d4f1e9}
+.tag{display:inline-block;font-size:.8rem;font-weight:600;padding:.2rem .8rem;border-radius:99px;background:var(--t);margin-bottom:.7rem}
+.tl h3{font-size:1.3rem;font-weight:700;margin-bottom:.2rem}
+.tl .org{font-size:.88rem;font-weight:600;color:var(--blue);margin-bottom:.7rem}
+.tl p,.tl li{color:var(--mute);font-size:.93rem}
+.tl ul{padding-left:1.1rem}.tl li{margin-bottom:.3rem}
+
+/* Projets */
+.pj{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.card{position:relative;overflow:hidden;height:21rem;border-radius:16px;background:#1b2c4d;color:#fff;cursor:pointer}
+.card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover>img{transform:scale(1.04)}
+.cap{position:absolute;inset:auto 0 0;padding:4rem 1.4rem 1.4rem;background:linear-gradient(transparent,#0e1b33ee)}
+.cap h3{font-size:1.4rem;font-weight:700;margin-top:.5rem}
+.bd{display:inline-block;font-size:.75rem;font-weight:700;padding:.15rem .7rem;border-radius:99px;background:var(--blue);color:#fff;white-space:nowrap}
+.bd.b{background:#b45309}.bd.s{background:#5b3fd0}
+.ov{position:absolute;inset:0;display:flex;flex-direction:column;padding:1.4rem;background:#fff;color:var(--ink);transform:translateY(101%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.card:hover .ov,.card:focus-within .ov,.card.open .ov{transform:none}
+.ov .top{display:flex;justify-content:space-between;align-items:center;gap:.8rem;margin-bottom:.8rem}
+.ov h3{font-size:1.25rem;font-weight:800;color:var(--blue)}
+.ov .tg{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem}
+.tg span{font-size:.76rem;font-weight:600;padding:.1rem .6rem;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.ov ul{flex:1;min-height:0;overflow:auto;padding-left:1.1rem;font-size:.88rem;color:var(--mute)}
+.ov li{margin-bottom:.35rem}
+.ov .btn{margin-top:.8rem;width:100%}
+
+/* Contact */
+.ct{text-align:center}
+.ct .hd{position:static;margin-bottom:2rem}
+.ct .hd p{width:auto;margin:.7rem 0 0;padding:0;border:0}
+.ct>p{max-width:40rem;margin:0 auto 1.4rem;color:var(--mute)}
+.ct>h3{font-size:1.35rem;font-weight:700;margin-bottom:3rem}
+.cc{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cc>*{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;min-height:13.5rem;padding:2rem 1.5rem;border-radius:22px;font-size:1.15rem;font-weight:700;text-decoration:none;overflow-wrap:anywhere;transition:transform .25s}
+.cc a:hover{transform:translateY(-5px)}
+.cc i{font-size:3.2rem}
+.c1{background:#ece4fb;color:#5b3fd0}.c2{background:var(--sky);color:var(--blue)}.c3{background:#d4f1e9;color:#0b6b57;gap:.9rem}
+.c3 strong{font:700 1.4rem/1.2 'Bricolage Grotesque',sans-serif}
+.c3 p{font-size:1rem;font-weight:400;color:#2f4f47}.c3 b{font-weight:700}
+
+/* Pied de page */
+footer{background:#08111f;color:#aab4c6;padding:2.5rem 0;font-size:.88rem}
+footer .w{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem}
+footer .row{display:flex;flex-wrap:wrap;gap:.8rem}
+footer .btn{padding:.6rem 1.1rem;font-size:.85rem}
+footer nav{position:static;display:flex;gap:1.5rem;background:none;border:0;backdrop-filter:none}
+footer nav a{text-decoration:none}footer nav a:hover{color:#fff}
+#notif{position:fixed;right:1.2rem;bottom:1.2rem;z-index:30;max-width:calc(100% - 2.4rem);padding:.85rem 1.2rem;border-radius:12px;background:var(--ink);color:#fff;border:1px solid #ffffff30;font-size:.88rem;font-weight:600;opacity:0;transform:translateY(1rem);transition:.3s;pointer-events:none}
+#notif.show{opacity:1;transform:none}
+#notif i{color:var(--sun);margin-right:.4rem}
+
+@media(max-width:1000px){
+.sec{grid-template-columns:1fr;gap:2rem}.hd{position:static}
+.hero .w{grid-template-columns:1fr}.ph{width:min(100%,260px);justify-self:start}}
+@media(max-width:700px){
+.menu{display:none}#menu-btn{display:block}
+.abt,.pj,.cc{grid-template-columns:1fr}
+.abt article{padding:1.5rem 0 0;margin-top:1.5rem;border-left:0;border-top:1px solid var(--line)}.abt article:first-child{margin:0;padding:0;border:0}
+.tl article{grid-template-columns:1fr;gap:.4rem;padding-left:1.5rem}
+section{padding:4rem 0}.hero{padding-top:7rem}}
+@media(min-width:701px){#mm{display:none}}
+@media(prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="w bar">
+    <a href="#top" class="logo"><b>CD</b><span>CÉLIAN DUVAL</span></a>
+    <div class="menu">
+      <a href="#about">À propos</a><a href="#skills">Compétences</a><a href="#projects">Réalisations</a><a href="#timeline">Parcours</a><a href="#contact">Contact</a>
+    </div>
+    <button id="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mm"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="mm" hidden>
+    <a href="#about">À propos</a><a href="#skills">Compétences</a><a href="#projects">Réalisations</a><a href="#timeline">Parcours</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero dk" id="top">
+  <div class="w">
+    <div class="tx">
+      <span class="pill">Futur Ingénieur Logiciel — Master ILI</span>
+      <h1><span>Célian</span><span>Duval</span></h1>
+      <p class="sub">Développeur Web &amp; Logiciel Full-Stack</p>
+      <p class="lead">Basé près de Lille (Sailly-sur-la-Lys). Actuellement en Master Informatique à l’Université d’Artois. Passionné par la conception d’applications robustes, d’architectures SaaS et de solutions web sur-mesure.</p>
+      <div class="cta">
+        <a href="#projects" class="btn sun"><i class="fa-solid fa-code"></i> Voir mes projets</a>
+        <a href="#contact" class="btn line"><i class="fa-solid fa-paper-plane"></i> Me contacter</a>
+      </div>
+    </div>
+    <div class="ph">
+      <img src="https://lh3.googleusercontent.com/gg/AJWXcNeSFNP2LwwXRx3gVkbxliHnVMgmggNTT23AV_drboS8R9HFwOY1cEZyyh_S6I9waZz6jAXEFMKP_fjKl2yCYhSutMScR3Ds7IuIt0qVW_YfAjvnNr9POa2qz0Nx9s1p72gm3s2rtOZIdWSDIgqOO8opa3hzM1eXR7IorAG37A0mMAVZ9xk85slEBMVXwl0iLkiGvzmxC4ut5qK1apZVv_2UCQprxSn-ne-AUOkggWIrxtXM6MD--0UcUnOOXUKQxGlPrNpVwLxQPqabZ_ga6DKzHNNuRj5QsSc=s0" alt="Célian Duval" onerror="this.src='https://placehold.co/300x375/1e3a5f/ffffff?text=Célian+Duval'">
+    </div>
+  </div>
+</header>
+
+<section id="about" class="white">
+  <div class="w sec">
+    <div class="hd"><h2>À propos de moi</h2><p>Profil &amp; valeurs</p></div>
+    <div class="abt">
+      <article>
+        <div class="ic"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3>Parcours Académique</h3>
+        <p>Actuellement en Master Informatique (Ingénierie Logicielle pour l’Internet) à l’Université d’Artois (Lens). Solides bases en algorithmique, POO et génie logiciel.</p>
+      </article>
+      <article>
+        <div class="ic"><i class="fa-solid fa-laptop-code"></i></div>
+        <h3>Expérience &amp; Freelance</h3>
+        <p>Création de solutions web sur-mesure pour des commerces locaux (pizzeria avec commande en ligne, site vitrine fleuriste) et engagement bénévole (tennis de table).</p>
+      </article>
+      <article>
+        <div class="ic"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Objectif Professionnel</h3>
+        <p>Recherche d’un stage de fin d’études en tant que Développeur Full-Stack au sein d’une grande ESN lilloise (Capgemini, CGI, Sopra Steria). Rigueur et autonomie garanties.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="w sec">
+    <div class="hd"><h2>Compétences</h2><p>Expertise technique</p></div>
+    <div class="sk">
+      <div>
+        <h3><i class="fa-solid fa-desktop"></i>Front-End</h3>
+        <ul>
+          <li style="--v:95%"><span>HTML5 / CSS3 / SASS</span><b>95%</b></li>
+          <li style="--v:85%"><span>JavaScript / TypeScript</span><b>85%</b></li>
+          <li style="--v:80%"><span>React.js / Vue.js</span><b>80%</b></li>
+          <li style="--v:90%"><span>Tailwind CSS / Bootstrap</span><b>90%</b></li>
+        </ul>
+      </div>
+      <div>
+        <h3><i class="fa-solid fa-server"></i>Back-End &amp; BDD</h3>
+        <ul>
+          <li style="--v:85%"><span>Java / Spring Boot</span><b>85%</b></li>
+          <li style="--v:80%"><span>PHP / Laravel</span><b>80%</b></li>
+          <li style="--v:75%"><span>Python / C++</span><b>75%</b></li>
+          <li style="--v:85%"><span>MySQL / PostgreSQL</span><b>85%</b></li>
+        </ul>
+      </div>
+      <div>
+        <h3><i class="fa-solid fa-tools"></i>Outils &amp; DevOps</h3>
+        <ul>
+          <li style="--v:90%"><span>Git / GitHub / GitLab</span><b>90%</b></li>
+          <li style="--v:80%"><span>Docker / API REST</span><b>80%</b></li>
+          <li style="--v:75%"><span>Linux / Bash</span><b>75%</b></li>
+          <li style="--v:85%"><span>Méthodes Agiles / Scrum</span><b>85%</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline" class="white">
+  <div class="w sec">
+    <div class="hd"><h2>Parcours</h2><p>Chronologie</p></div>
+    <div class="tl">
+      <article class="k1">
+        <time>2026</time>
+        <div>
+          <span class="tag">💼 Stage de Fin d’Études</span>
+          <h3>Stagiaire Développeur Full-Stack — Capgemini (Lille)</h3>
+          <p class="org">Stage de fin d’études — Master Informatique</p>
+          <ul>
+            <li>Participation au développement d’applications web d’entreprise (Java Spring Boot, React, PostgreSQL).</li>
+            <li>Refonte d’architectures logicielles et intégration de services cloud en méthodes Agiles.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="k2">
+        <time>2024 – 2026</time>
+        <div>
+          <span class="tag">🎓 Diplômé (Fin d’études)</span>
+          <h3>Master Informatique — Ingénierie Logicielle pour l’Internet (ILI)</h3>
+          <p class="org">Université d’Artois — Faculté des Sciences Jean Perrin (Lens)</p>
+          <p>Architecture SaaS multi-tiers, développement mobile, sécurité web et DevOps. Fin des études supérieures en 2026.</p>
+        </div>
+      </article>
+      <article class="k2">
+        <time>2021 – 2024</time>
+        <div>
+          <span class="tag">🎓 Diplôme</span>
+          <h3>Licence Informatique</h3>
+          <p class="org">Université d’Artois — Faculté des Sciences de Lens</p>
+          <p>Algorithmique, POO (Java, C++), Développement Web Full-Stack et Bases de données relationnelles.</p>
+        </div>
+      </article>
+      <article class="k3">
+        <time>2024 – Présent</time>
+        <div>
+          <span class="tag">🤝 Freelance &amp; Bénévolat</span>
+          <h3>Développeur Web Indépendant &amp; Bénévole</h3>
+          <p class="org">Commerces locaux &amp; Association (TT Sailly)</p>
+          <ul>
+            <li>Création de sites web sur-mesure (Pizzeria avec click-and-collect, site vitrine fleuriste).</li>
+            <li>Gestion et maintenance bénévole du site officiel du club de tennis de table de Sailly-sur-la-Lys (ttsaillylys.fr).</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="w sec">
+    <div class="hd"><h2>Survolez les cartes pour découvrir les détails</h2><p>Réalisations &amp; projets</p></div>
+    <div class="pj">
+
+      <div class="card" tabindex="0">
+        <img src="https://placehold.co/800x500/1e3a5f/ffffff?text=Pizzeria+-+Click+and+Collect" alt="Pizzeria" loading="lazy">
+        <div class="cap"><span class="bd">Freelance</span><h3>Site Web Interactif — Pizzeria</h3></div>
+        <div class="ov">
+          <div class="top"><h3>Pizzeria (Click &amp; Collect)</h3><span class="bd">Freelance</span></div>
+          <div class="tg"><span>React</span><span>Node.js</span><span>PostgreSQL</span></div>
+          <ul>
+            <li>Analyse des besoins du client et conception de l’architecture web.</li>
+            <li>Développement d’une carte interactive et d’un système de commande en ligne.</li>
+            <li>Intégration d’un module de réservation de tables en temps réel.</li>
+          </ul>
+          <button class="btn" onclick="showNotification('Ouverture de la démo interactive (Pizzeria)…')">Voir le site <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="card" tabindex="0">
+        <img src="https://placehold.co/800x500/2b6cb0/ffffff?text=Fleuriste+-+Site+Vitrine" alt="Fleuriste" loading="lazy">
+        <div class="cap"><span class="bd">Freelance</span><h3>Site Vitrine sur-mesure — Fleuriste</h3></div>
+        <div class="ov">
+          <div class="top"><h3>Fleuriste Artisan</h3><span class="bd">Freelance</span></div>
+          <div class="tg"><span>HTML/CSS</span><span>JavaScript</span><span>PHP</span></div>
+          <ul>
+            <li>Création d’un design élégant et épuré adapté à l’univers floral.</li>
+            <li>Mise en valeur du catalogue de compositions et des services d’événementiel.</li>
+            <li>Optimisation du référencement local (SEO) et formulaire de devis en ligne.</li>
+          </ul>
+          <button class="btn" onclick="showNotification('Ouverture de la démo du site vitrine (Fleuriste)…')">Voir le site <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="card" tabindex="0">
+        <img src="https://lh3.googleusercontent.com/gg/AJWXcNeSFNP2LwwXRx3gVkbxliHnVMgmggNTT23AV_drboS8R9HFwOY1cEZyyh_S6I9waZz6jAXEFMKP_fjKl2yCYhSutMScR3Ds7IuIt0qVW_YfAjvnNr9POa2qz0Nx9s1p72gm3s2rtOZIdWSDIgqOO8opa3hzM1eXR7IorAG37A0mMAVZ9xk85slEBMVXwl0iLkiGvzmxC4ut5qK1apZVv_2UCQprxSn-ne-AUOkggWIrxtXM6MD--0UcUnOOXUKQxGlPrNpVwLxQPqabZ_ga6DKzHNNuRj5QsSc=s0" alt="Tennis de Table Sailly" loading="lazy">
+        <div class="cap"><span class="bd b">Bénévolat</span><h3>Tennis de Table de Sailly</h3></div>
+        <div class="ov">
+          <div class="top"><h3>TT Sailly-sur-la-Lys</h3><span class="bd b">Bénévolat</span></div>
+          <div class="tg"><span>WordPress</span><span>CSS3</span><span>Hébergement</span></div>
+          <ul>
+            <li>Développement et maintenance bénévole du site officiel du club local.</li>
+            <li>Mise en place d’un espace membres, actualités et calendriers de matchs.</li>
+            <li>Intégration des résultats sportifs et liens vers les réseaux sociaux.</li>
+          </ul>
+          <a href="https://ttsaillylys.fr" target="_blank" rel="noopener" class="btn">Voir le site <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="card" tabindex="0">
+        <img src="https://placehold.co/800x500/d97706/ffffff?text=SaaS+Restauration+-+Gestion" alt="SaaS Restaurant" loading="lazy">
+        <div class="cap"><span class="bd s">Projet SaaS</span><h3>Application SaaS de Gestion &amp; Réservation</h3></div>
+        <div class="ov">
+          <div class="top"><h3>SaaS Restauration</h3><span class="bd s">Projet Pro</span></div>
+          <div class="tg"><span>Java Spring Boot</span><span>React</span><span>PostgreSQL</span></div>
+          <ul>
+            <li>Conception d’une solution SaaS complète dédiée à la restauration.</li>
+            <li>Gestion de plans de salle, tables et réservations en temps réel.</li>
+            <li>Tableau de bord administrateur et authentification sécurisée.</li>
+          </ul>
+          <button class="btn" onclick="showNotification('Ouverture de la démo SaaS Restauration…')">Voir le site <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="white">
+  <div class="w ct">
+    <div class="hd"><h2>Me Contacter</h2><p>Entrons en contact</p></div>
+    <p>À la recherche d’un stage de fin d’études en tant que développeur Full-Stack, ou pour toute question concernant mes réalisations freelance, n’hésitez pas à m’envoyer un message.</p>
+    <h3>Discutons de vos projets ou opportunités</h3>
+    <div class="cc">
+      <a href="tel:+33766443438" class="c1"><i class="fa-solid fa-mobile-screen"></i><span>07 66 44 34 38</span></a>
+      <a href="mailto:celianduval@free.fr" class="c2"><i class="fa-regular fa-envelope"></i><span>celianduval@free.fr</span></a>
+      <div class="c3"><strong>Vous souhaitez me rencontrer ?</strong><p>Je suis disponible à <b>Sailly-sur-la-Lys (62)</b> et ses alentours</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="w">
+    <div>© 2026 Célian Duval — Tous droits réservés.</div>
+    <div class="row">
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="btn" style="background:#0a66c2"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="cv_celian_duval_capgemini.pdf" download="cv_celian_duval_capgemini.pdf" class="btn sun"><i class="fa-solid fa-file-pdf"></i> Télécharger le CV (PDF A4)</a>
+    </div>
+    <nav aria-label="Pied de page">
+      <a href="#top">Accueil</a><a href="#projects">Réalisations</a><a href="#timeline">Parcours</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<div id="notif" role="status"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const mm = $('#mm'), mb = $('#menu-btn');
+mb.addEventListener('click', () => {
+  mm.hidden = !mm.hidden;
+  mb.setAttribute('aria-expanded', String(!mm.hidden));
+});
+mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mm.hidden = true;
+  mb.setAttribute('aria-expanded', 'false');
+}));
+
+let nt;
+function showNotification(message) {
+  const n = $('#notif');
+  n.innerHTML = '<i class="fa-solid fa-info-circle"></i>' + message;
+  n.classList.add('show');
+  clearTimeout(nt);
+  nt = setTimeout(() => n.classList.remove('show'), 4000);
+}
+
+// Écrans tactiles : un appui ouvre / ferme le volet du projet
+document.querySelectorAll('.card').forEach(c => c.addEventListener('click', e => {
+  if (matchMedia('(hover:none)').matches && !e.target.closest('a,button')) c.classList.toggle('open');
+}));
+
+// Les barres de compétences se remplissent à l'arrivée sur la section
+const sk = $('#skills');
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver((e, o) => {
+    if (e[0].isIntersecting) { sk.classList.add('in'); o.disconnect(); }
+  }, { threshold: .25 }).observe(sk);
+} else sk.classList.add('in');
+</script>
+</body>
+</html>
